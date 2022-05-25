@@ -10,7 +10,7 @@
     // See https://docs.renovatebot.com/presets-config/#configjs-app
     "config:js-app",
 
-    "github>projitect/renovate-config:org",
+    "github>projitect/renovate-config:org.json5",
   ],
 
   // Always run off latest main to ensure CI is run against the latest code

@@ -5,6 +5,6 @@
 
 {
   extends: [
-    "github>projitect/renovate-config:js-app",
+    "github>projitect/renovate-config:js-app.json5",
   ],
 }
