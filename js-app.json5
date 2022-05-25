@@ -18,6 +18,9 @@
   rebaseWhen: "behind-base-branch",
   prConcurrentLimit: 1,
 
+  // Enable lockfile maintenance. The schedule and priority are configured further down
+  lockFileMaintenance: { enabled: true },
+
   packageRules: [
     /* ******************************************************
      * SECTION: automerge, schedule and priority
