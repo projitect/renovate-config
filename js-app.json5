@@ -1,0 +1,157 @@
+/*
+ * Default settings for JS apps in this organization
+ * - Sets rules for concurrency, schedule and prioritization
+ * - Sets rules for stability requirements
+ */
+
+{
+  extends: [
+    // Default configuration from Renovate
+    // See https://docs.renovatebot.com/presets-config/#configjs-app
+    "config:js-app",
+
+    "github>projitect/renovate-config:org",
+  ],
+
+  // Always run off latest main to ensure CI is run against the latest code
+  // Limit to 1 concurrent PR to avoid re-triggering CI for every rebase
+  rebaseWhen: "behind-base-branch",
+  prConcurrentLimit: 1,
+
+  packageRules: [
+    /* ******************************************************
+     * SECTION: automerge, schedule and priority
+     ****************************************************** */
+
+    {
+      // Any plumbing-type update
+      matchUpdateTypes: ["pin", "digest", "lockFileMaintenance"],
+
+      // Auto-merge these updates
+      automerge: true,
+
+      // Allow them to happen any time
+
+      // These are highest priority because they're the safest auto-merged updates
+      prPriority: 3,
+    },
+
+    {
+      // Any depdendency (non-major)
+      matchUpdateTypes: ["minor", "patch"],
+
+      // Auto-merge these updates
+      automerge: true,
+
+      // Limit these updates to happen overnight
+      // They can be run without human intervention, so why waste CI resources during working hours?
+      schedule: ["after 8pm", "before 7am"],
+
+      // These are high priority because they're quite safe auto-merged updates
+      prPriority: 2,
+    },
+
+    {
+      // Dev dependencies (major)
+      matchDepTypes: ["devDependencies"],
+      matchUpdateTypes: ["major"],
+
+      // Auto-merge these updates
+      automerge: true,
+
+      // Limit these updates to happen overnight
+      // They can be run without human intervention, so why waste CI resources during working hours?
+      schedule: ["after 8pm", "before 7am"],
+
+      // These are medium priority because they're nearly-safe auto-merged updates
+      prPriority: 1,
+    },
+
+    {
+      // Depdendencies (major)
+      matchDepTypes: ["dependencies"],
+      matchUpdateTypes: ["major"],
+
+      // Do not auto-merge these updates
+      automerge: false,
+
+      // Allow them to happen any time
+
+      // These are low priority because they are not auto-merged.
+      // Since they'll require human approval and we're only allowing 1 PR at a time,
+      // these should not block the overnight updates from auto-merging.
+      // Why -1? This ensures that any other unspecified priority PRs will come first.
+      prPriority: -1,
+    },
+
+    {
+      // Lockfile maintenance
+      matchUpdateTypes: ["lockFileMaintenance"],
+
+      // Auto-merge these updates
+      automerge: true,
+
+      // Limit these updates to happen overnight
+      // They can be run without human intervention, so why waste CI resources during working hours?
+      schedule: ["after 8pm", "before 7am"],
+
+      // These are the lowest priority updates,
+      // because if they fail CI they'll be hard to fix
+      prPriority: -2,
+    },
+
+    /* ******************************************************
+     * SECTION: stabilityDays
+     ****************************************************** */
+
+    {
+      // Any plumbing-type update
+      // Lockfile maintenance
+      matchUpdateTypes: ["pin", "digest", "lockFileMaintenance"],
+
+      // Do not wait for stability, since these are just pinning dependencies
+      // and doing lockfile maintenance
+      stabilityDays: 0,
+      prCreation: "not-pending",
+    },
+
+    {
+      // Any dependency (patch)
+      matchUpdateTypes: ["patch"],
+
+      // Do not wait for stability, since these are probably bug fixes,
+      // and could be important security updates
+      stabilityDays: 0,
+      prCreation: "not-pending",
+    },
+
+    {
+      // Any dev dependency
+      matchDepTypes: ["devDependencies"],
+
+      // Wait a minimum amount of days before creating the PRs
+      stabilityDays: 1,
+      prCreation: "not-pending",
+    },
+
+    {
+      // Dependencies (minor)
+      matchDepTypes: ["dependencies"],
+      matchUpdateTypes: ["minor"],
+
+      // Wait a medium number of days before creating the PRs
+      stabilityDays: 3,
+      prCreation: "not-pending",
+    },
+
+    {
+      // Depdendencies (major)
+      matchDepTypes: ["dependencies"],
+      matchUpdateTypes: ["major"],
+
+      // Wait a good long number of days before creating the PRs
+      stabilityDays: 5,
+      prCreation: "not-pending",
+    },
+  ],
+}
