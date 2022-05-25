@@ -25,7 +25,7 @@
 
     {
       // Any plumbing-type update
-      matchUpdateTypes: ["pin", "digest", "lockFileMaintenance"],
+      matchUpdateTypes: ["pin", "digest"],
 
       // Auto-merge these updates
       automerge: true,
