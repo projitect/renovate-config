@@ -108,27 +108,6 @@
      ****************************************************** */
 
     {
-      // Any plumbing-type update
-      // Lockfile maintenance
-      matchUpdateTypes: ["pin", "digest", "lockFileMaintenance"],
-
-      // Do not wait for stability, since these are just pinning dependencies
-      // and doing lockfile maintenance
-      stabilityDays: 0,
-      prCreation: "not-pending",
-    },
-
-    {
-      // Any dependency (patch)
-      matchUpdateTypes: ["patch"],
-
-      // Do not wait for stability, since these are probably bug fixes,
-      // and could be important security updates
-      stabilityDays: 0,
-      prCreation: "not-pending",
-    },
-
-    {
       // Any dev dependency
       matchDepTypes: ["devDependencies"],
 
