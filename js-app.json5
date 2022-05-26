@@ -107,33 +107,36 @@
      * SECTION: stabilityDays
      ****************************************************** */
 
-    {
-      // Any dev dependency
-      matchDepTypes: ["devDependencies"],
+    // NOTE: these are blocked by https://github.com/renovatebot/renovate/issues/15749
+    //       until that issue has a solution or workaround, stability days will be disabled
 
-      // Wait a minimum amount of days before creating the PRs
-      stabilityDays: 1,
-      prCreation: "not-pending",
-    },
+    // {
+    //   // Any dev dependency
+    //   matchDepTypes: ["devDependencies"],
 
-    {
-      // Dependencies (minor)
-      matchDepTypes: ["dependencies"],
-      matchUpdateTypes: ["minor"],
+    //   // Wait a minimum amount of days before creating the PRs
+    //   stabilityDays: 1,
+    //   prCreation: "not-pending",
+    // },
 
-      // Wait a medium number of days before creating the PRs
-      stabilityDays: 3,
-      prCreation: "not-pending",
-    },
+    // {
+    //   // Dependencies (minor)
+    //   matchDepTypes: ["dependencies"],
+    //   matchUpdateTypes: ["minor"],
 
-    {
-      // Depdendencies (major)
-      matchDepTypes: ["dependencies"],
-      matchUpdateTypes: ["major"],
+    //   // Wait a medium number of days before creating the PRs
+    //   stabilityDays: 3,
+    //   prCreation: "not-pending",
+    // },
 
-      // Wait a good long number of days before creating the PRs
-      stabilityDays: 5,
-      prCreation: "not-pending",
-    },
+    // {
+    //   // Depdendencies (major)
+    //   matchDepTypes: ["dependencies"],
+    //   matchUpdateTypes: ["major"],
+
+    //   // Wait a good long number of days before creating the PRs
+    //   stabilityDays: 5,
+    //   prCreation: "not-pending",
+    // },
   ],
 }
