@@ -13,6 +13,12 @@
     "github>projitect/renovate-config:org.json5",
   ],
 
+  // Since npm packages can be un-published within 24 hours, always wait at least 1 day
+  // Create PRs only after that 1 day has passed
+  stabilityDays: 1,
+  prCreation: "not-pending",
+  internalChecksFilter: "strict", // See discussion here: https://github.com/renovatebot/renovate/discussions/15764
+
   // Always run off latest main to ensure CI is run against the latest code
   // Limit to 1 concurrent PR to avoid re-triggering CI for every rebase
   rebaseWhen: "behind-base-branch",
@@ -104,39 +110,27 @@
     },
 
     /* ******************************************************
-     * SECTION: stabilityDays
+     * SECTION: Extra stabilityDays
      ****************************************************** */
 
-    // NOTE: these are blocked by https://github.com/renovatebot/renovate/issues/15749
-    //       until that issue has a solution or workaround, stability days will be disabled
+    {
+      // Dependencies (minor)
+      matchDepTypes: ["dependencies"],
+      matchUpdateTypes: ["minor"],
 
-    // {
-    //   // Any dev dependency
-    //   matchDepTypes: ["devDependencies"],
+      // Wait a medium number of days before creating the PRs
+      stabilityDays: 2,
+      prCreation: "not-pending",
+    },
 
-    //   // Wait a minimum amount of days before creating the PRs
-    //   stabilityDays: 1,
-    //   prCreation: "not-pending",
-    // },
+    {
+      // Depdendencies (major)
+      matchDepTypes: ["dependencies"],
+      matchUpdateTypes: ["major"],
 
-    // {
-    //   // Dependencies (minor)
-    //   matchDepTypes: ["dependencies"],
-    //   matchUpdateTypes: ["minor"],
-
-    //   // Wait a medium number of days before creating the PRs
-    //   stabilityDays: 3,
-    //   prCreation: "not-pending",
-    // },
-
-    // {
-    //   // Depdendencies (major)
-    //   matchDepTypes: ["dependencies"],
-    //   matchUpdateTypes: ["major"],
-
-    //   // Wait a good long number of days before creating the PRs
-    //   stabilityDays: 5,
-    //   prCreation: "not-pending",
-    // },
+      // Wait a good long number of days before creating the PRs
+      stabilityDays: 3,
+      prCreation: "not-pending",
+    },
   ],
 }
