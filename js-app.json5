@@ -17,7 +17,6 @@
   // Create PRs only after that 1 day has passed
   stabilityDays: 1,
   prCreation: "not-pending",
-  internalChecksFilter: "strict", // See discussion here: https://github.com/renovatebot/renovate/discussions/15764
 
   // Always run off latest main to ensure CI is run against the latest code
   // Limit to 1 concurrent PR to avoid re-triggering CI for every rebase
