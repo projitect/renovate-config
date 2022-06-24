@@ -1,0 +1,5 @@
+{
+  "extends": [
+    "github>projitect/renovate-config:js-app.json5",
+  ],
+}
