@@ -117,9 +117,9 @@
       // Run them after the other nightly updates
       // Run these at most a few times weekly because they can be pretty noisy
       schedule: [
-        "every monday between 7am and 9am",
-        "every thursday between 7am and 9am",
-        "every saturday between 7am and 9am",
+        "after 7am and before 9am on monday",
+        "after 7am and before 9am on thursday",
+        "after 7am and before 9am on saturday",
       ],
 
       // These are the lowest priority updates,
