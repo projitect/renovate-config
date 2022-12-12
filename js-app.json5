@@ -113,7 +113,14 @@
 
       // Limit these updates to happen overnight
       // They can be run without human intervention, so why waste CI resources during working hours?
-      schedule: ["after 8pm", "before 7am"],
+      // However, don't overlap with other types of updates or they may never get prioritized
+      // Run them after the other nightly updates
+      // Run these at most a few times weekly because they can be pretty noisy
+      schedule: [
+        "every monday between 7am and 9am",
+        "every thursday between 7am and 9am",
+        "every saturday between 7am and 9am",
+      ],
 
       // These are the lowest priority updates,
       // because if they fail CI they'll be hard to fix
