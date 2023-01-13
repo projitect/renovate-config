@@ -111,10 +111,10 @@
       // Auto-merge these updates
       automerge: true,
 
-      // Limit these updates to happen overnight
+      // Limit these updates to happen during off-times
       // They can be run without human intervention, so why waste CI resources during working hours?
-      // Run this type of update only once nightly. Otherwise they are quite noisy, even in this small window of time
-      schedule: ["once after 8pm and before 7am"],
+      // Run this type of update only once a week. Otherwise they are quite noisy, even in this small window of time
+      schedule: ["once on sunday"],
 
       // These are the lowest priority updates,
       // because if they fail CI they'll be hard to fix
