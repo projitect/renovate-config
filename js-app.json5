@@ -65,7 +65,7 @@
 
       // Limit these updates to happen overnight
       // They can be run without human intervention, so why waste CI resources during working hours?
-      schedule: ["after 8pm", "before 7am"],
+      schedule: ["after 8pm and before 7am"],
 
       // These are high priority because they're quite safe auto-merged updates
       prPriority: 2,
@@ -81,7 +81,7 @@
 
       // Limit these updates to happen overnight
       // They can be run without human intervention, so why waste CI resources during working hours?
-      schedule: ["after 8pm", "before 7am"],
+      schedule: ["after 8pm and before 7am"],
 
       // These are medium priority because they're nearly-safe auto-merged updates
       prPriority: 1,
@@ -113,14 +113,8 @@
 
       // Limit these updates to happen overnight
       // They can be run without human intervention, so why waste CI resources during working hours?
-      // However, don't overlap with other types of updates or they may never get prioritized
-      // Run them after the other nightly updates
-      // Run these at most a few times weekly because they can be pretty noisy
-      schedule: [
-        "after 7am and before 9am on monday",
-        "after 7am and before 9am on thursday",
-        "after 7am and before 9am on saturday",
-      ],
+      // Run this type of update only once nightly. Otherwise they are quite noisy, even in this small window of time
+      schedule: ["once after 8pm and before 7am"],
 
       // These are the lowest priority updates,
       // because if they fail CI they'll be hard to fix
