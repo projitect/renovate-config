@@ -24,8 +24,8 @@
 {
   extends: [
     // Default configuration from Renovate
-    // See https://docs.renovatebot.com/presets-config/#configjs-app
-    "config:js-app",
+    // See https://docs.renovatebot.com/presets-config/#configjs-lib
+    "config:js-lib",
 
     "github>projitect/renovate-config:org.json5",
   ],
