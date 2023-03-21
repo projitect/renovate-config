@@ -1,0 +1,28 @@
+/*
+ * Special rules to merge @projitect packages with the highest priority,
+ * without any schedule delay. This is useful for repos that are testing
+ * @projitect/* internal packages. With these rules, new updates will be
+ * pulled in ASAP to uncover issues ASAP.
+ * 
+ */
+
+{
+  packageRules: [
+    {
+      // Any update to @projitect/* packages
+      matchPackagePatterns: ["^@projitect\/"],
+
+      // Auto-merge these updates
+      automerge: true,
+
+      // Allow them to happen any time
+      schedule: ["at any time"],
+
+      // These should be a very high priority
+      prPriority: 100,
+
+      // Don't wait to get updates
+      stabilityDays: 0,
+    },
+  ],
+}
