@@ -16,6 +16,9 @@
 
       // Auto-merge these updates
       automerge: true,
+      
+      // Still assign people to the PR so they are at least aware that a PR was created
+      assignAutomerge: true,
 
       // Allow them to happen any time
       schedule: ["at any time"],
