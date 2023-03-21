@@ -28,6 +28,7 @@
 
       // Don't wait to get updates
       stabilityDays: 0,
+      prCreation: "not-pending", // Copying the same config that's in js-lib
     },
   ],
 }
