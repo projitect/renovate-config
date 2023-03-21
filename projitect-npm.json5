@@ -1,0 +1,12 @@
+/*
+ * Set the NPM_TOKEN correctly for repos that need to install packages from
+ * the @projitect Github packages registry
+ */
+
+{
+  // Set the key for accessing Github packages
+  "encrypted": {
+    "npmToken": "wcFMA/xDdHCJBTolAQ//WapwjkAtqoYwwdrK4CkDznMY/wslCkHRf0RAlrInauGYvLW2SihU33Ym3I5xfBh+hBmCOSaKotwOui5u5LlHKEO9Ye4wwkihKUMeOWfYaa+BMrVYknxtP4l2T4rvU5yMTEeNEkHFgv+EgtwTf4fn21cgGJ5BLt0g7YIUG+WGZRfzaCHt0/weVT2xDLEJ40HTRku+35FGRCGvR+lRPOZvb4q0VKTYDR7urUu1UuJgmTzVzvc6cNAx1KbLWmb+wawwGPjJhOJknoE8VTLEWvsPqmy+OKuhdaUrwRVpq0A1YIiKoKwB3EaW2tj8bWK0W8vmeQGiNyzghz5FZlRTUTnSy0HKeDiy+YnRxsWrDtjASJppSWru1mLP4O28GzUxzj2mz0sMWOk+zBW6WwWS6ifEq8seYPTlI5GIgerAJkjRStlEowYuktzvhRZ2hrz7Dcqj/xiLZqGQApldBBxLsDKF28cfpFI95i3x0pC6atydBLq20OjKvD/QqzsVMEROIwCNKsenO++rzfIlXTcPJBPyZcJHGRwPaITuKUoJcK5/Y9KNfs09FgYEdY4ne9RJjL77WfXG14/SvvofPWv58CL2ZUgfmcVBckFB/3F/OL72yz42bSebCZGmWj26NNGoUMBqsXv6tKFuEMtn0H+ykTaKO0aQqW9/Zf+uaGm0xomp6+vSeAGHsyPLt+3WB6in5BlPC6K2RGLR+FImvoI7lYxJxazfS8FUr3ATWTMo80FFnGs6cOFjHo/goPBBZjfbXI6FpBMqMAnk4gxk6PEJkQCBGv+E+UyPBQ2ltBthTn7R6+skbvjU8josu8WSSZh69H42yrOHGKbvZ/n1tw"
+  },
+  "npmrc": "//npm.pkg.github.com/:_authToken=${NPM_TOKEN}\n@projitect:registry=https://npm.pkg.github.com"
+}
