@@ -5,6 +5,8 @@
  */
 
 {
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+
   // Add these labels to all PRs to make them easy to visually separate
   addLabels: ["dependencies"],
 

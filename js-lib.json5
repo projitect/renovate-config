@@ -22,6 +22,8 @@
  */
 
 {
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+
   extends: [
     // Default configuration from Renovate
     // See https://docs.renovatebot.com/presets-config/#configjs-lib
