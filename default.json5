@@ -4,6 +4,8 @@
  */
 
 {
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+
   extends: [
     "github>projitect/renovate-config:js-lib.json5",
   ],
